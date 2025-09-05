@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'restaurant_orders_screen.dart';
 
 class RestaurantDashboard extends StatelessWidget {
   const RestaurantDashboard({super.key});
@@ -13,11 +14,17 @@ class RestaurantDashboard extends StatelessWidget {
           crossAxisCount: 2,
           mainAxisSpacing: 12,
           crossAxisSpacing: 12,
-          children: const <Widget>[
-            _DashboardCard(icon: Icons.restaurant_menu, title: 'Menu'),
-            _DashboardCard(icon: Icons.assignment_turned_in, title: 'Orders'),
-            _DashboardCard(icon: Icons.bar_chart, title: 'Analytics'),
-            _DashboardCard(icon: Icons.reviews, title: 'Reviews'),
+          children: <Widget>[
+            const _DashboardCard(icon: Icons.restaurant_menu, title: 'Menu'),
+            _DashboardCard(
+              icon: Icons.assignment_turned_in,
+              title: 'Orders',
+              onTap: (BuildContext context) {
+                Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const RestaurantOrdersScreen()));
+              },
+            ),
+            const _DashboardCard(icon: Icons.bar_chart, title: 'Analytics'),
+            const _DashboardCard(icon: Icons.reviews, title: 'Reviews'),
           ],
         ),
       ),
@@ -26,15 +33,16 @@ class RestaurantDashboard extends StatelessWidget {
 }
 
 class _DashboardCard extends StatelessWidget {
-  const _DashboardCard({required this.icon, required this.title});
+  const _DashboardCard({required this.icon, required this.title, this.onTap});
   final IconData icon;
   final String title;
+  final void Function(BuildContext context)? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: InkWell(
-        onTap: () {},
+        onTap: onTap == null ? null : () => onTap!(context),
         borderRadius: BorderRadius.circular(16),
         child: Center(
           child: Column(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'rider_map_screen.dart';
+import 'rider_deliveries_screen.dart';
 
 class RiderDashboard extends StatelessWidget {
   const RiderDashboard({super.key});
@@ -9,12 +11,20 @@ class RiderDashboard extends StatelessWidget {
       appBar: AppBar(title: const Text('Rider Dashboard')),
       body: ListView(
         padding: const EdgeInsets.all(16),
-        children: const <Widget>[
-          ListTile(leading: Icon(Icons.directions_bike), title: Text('Available Deliveries'), trailing: Icon(Icons.chevron_right)),
-          Divider(height: 0),
-          ListTile(leading: Icon(Icons.blur_on), title: Text('In-progress'), trailing: Icon(Icons.chevron_right)),
-          Divider(height: 0),
-          ListTile(leading: Icon(Icons.person_pin_circle), title: Text('Live Location'), trailing: Icon(Icons.chevron_right)),
+        children: <Widget>[
+          ListTile(
+            leading: const Icon(Icons.directions_bike),
+            title: const Text('Available Deliveries'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const RiderDeliveriesScreen())),
+          ),
+          const Divider(height: 0),
+          ListTile(
+            leading: const Icon(Icons.person_pin_circle),
+            title: const Text('Live Location'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const RiderMapScreen())),
+          ),
         ],
       ),
     );
