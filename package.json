@@ -1,0 +1,22 @@
+{
+  "name": "food-delivery-app",
+  "version": "1.0.0",
+  "description": "Food Delivery App similar to FoodPanda with multi-role support",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd mobile && npm start",
+    "web": "cd web-admin && npm start",
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "cd backend && npm run build",
+    "build:client": "cd mobile && npm run build",
+    "install:all": "npm install && cd backend && npm install && cd ../mobile && npm install && cd ../web-admin && npm install"
+  },
+  "keywords": ["food-delivery", "react-native", "nodejs", "typescript"],
+  "author": "Food Delivery Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
