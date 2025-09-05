@@ -1,0 +1,16 @@
+.dart_tool/
+.idea/
+.vscode/
+build/
+ios/Pods/
+android/.gradle/
+android/local.properties
+*.iml
+.flutter-plugins
+.flutter-plugins-dependencies
+google-services.json
+GoogleService-Info.plist
+.env
+pubspec.lock
+**/GeneratedPluginRegistrant.*
+
